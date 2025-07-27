@@ -28,7 +28,7 @@ return new class extends Migration
     $table->decimal('exchange_rate', 8, 2)->nullable();
     $table->decimal('total_cost_mnt', 15, 2)->nullable();
     $table->decimal('selling_price_mnt', 15, 2)->nullable();
-    $table->enum('status', ['prepared', 'china_border', 'ub_arrived', 'sold'])->default('prepared');
+    $table->enum('status', ['prepared', 'china_border', 'mongolia_border', 'ub_arrived', 'sold'])->default('prepared');
     $table->date('ub_arrived_date')->nullable();
     $table->timestamps();
 });
