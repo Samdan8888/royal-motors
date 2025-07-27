@@ -54,13 +54,16 @@
                                         $statusLabels = [
             'prepared' => 'Бэлтгэгдсэн',
             'china_border' => 'Хятад хил дээр',
+            'mongolia_border' => 'Монгол хил дээр',
             'ub_arrived' => 'УБ-д ирсэн',
             'sold' => 'Зарагдсан',
         ];
     @endphp
     {{ $statusLabels[$car->status] ?? $car->status }}</td>
                         <td class="p-2">
-    @if($car->status === 'mongolia_border')
+    @if($car->status === 'china_border')
+        @include('cars.partials.mongolia_border_modal', ['car' => $car])
+    @elseif($car->status === 'mongolia_border')
         @include('cars.partials.ub_arrived_modal', ['car' => $car])
     @elseif($car->status !== 'sold')
         <form action="{{ route('cars.status', $car) }}" method="POST">
